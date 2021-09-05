@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!------------------------------------------------------------------------------------------------>
+            <base href="https://fned.000webhostapp.com/" />  <!-- we use it as a folder instead of this folder where this file sitiation (ep_15)  -->
+            <title>clock</title>
+            
+            <!-- icon -->
+            <link rel="icon" href="my_image.jpg" /> <!-- required  -->
+            <link rel="shortcut" href="my_image.jpg" /> <!-- for google when someone wants to search -->
+            <link rel="apple-touch-icon" href="my_image.jpg" /> <!-- for apple -->
+            <!---->
+    
+            <!-- meta / google -->
+            <!-- <base href="https://fned.000webhostapp.com/" />  -->  <!-- we use it as a folder instead of this folder where this file sitiation (ep_15)  -->
+            <meta charset="UTF-8"> <!-- da3m ba9iyet a lou8at wl roumouz-->
+            <meta name="viewport" content="width=device-width,initial-scale=1.0" > <!-- for all the phones -->
+            <meta name="description" content="date"/>
+            <meta name="keywords" content="date"/>
+            <meta name="author" content="youssef fned"/>
+            <!-- see input_file.html or ep43 -->
+            <!---->
+    
+            <!-- website in facebook when you wanna share it in fcb -->
+            <meta property="og:title" content="clock" />
+            <meta property="og:description" content="date" />
+            <meta property="og:image" content="my_image.jpg" />
+            <meta property="og:image:width" content="1200" />  <!-- you should make the width=height*2 -->
+            <meta property="og:image:height" content="630"/> 
+            <meta property="og:type" content="website" /> <!-- content="article" -->
+            <!--   <meta property="og:url" content="" />  --> <!--it's not required or necessery -->
+            <!-- bloger: ep45 -->
+            <!---->
+    
+            <!-- twitter -->
+            <meta name="twitter:card" content="summary_large_image"> <!-- required -->
+            <meta name="twitter:title" content="date">
+            <meta name="twitter:description" content="date">
+            <meta name="twitter:image" content="my_image.jpg">
+    
+            <meta name="twitter:site" content="@"> <!-- name of site account on twitter -->
+            <meta name="twitter:creator" content="@">  <!-- name of creator account on twitter -->
+            <!---->
+    
+    <!------------------------------------------------------------------------------------------------>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+<style>
+#outside_box{
+max-width: 400px;
+max-height: 300px;
+height: 100%;
+width:100%;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+background: rgba(0, 0, 0, 0.514);
+}
+#inside_box{
+    position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+width: 340px;
+height: 240px;
+text-align: center;
+background-color: aqua;
+}
+#time{
+    width: 100%;
+    height: 200px;
+    color: aliceblue;
+    font-size: 50px;
+    font-family: 'Saira Stencil One', cursive;
+    background-color: black;
+    line-height: 200px;
+}
+#date{
+    height: 40px;
+    background: aliceblue;
+    font-size: 22px;
+    font-family: 'Saira Stencil One', cursive;
+}
+#setTime,#setDate{
+    margin: 0%;
+}
+input[type="color" i] {
+    border:0px solid black;
+    background-color: black;
+}
+</style>
+</head>
+<body id="body">
+    <main id="outside_box">
+        <main id="inside_box">
+            <article id="time">
+                <h1 id="setTime">23:00</h1>
+            </article>
+            <article id="date">
+                <p id="setDate">11-11-2019</p>
+            </article>
+            <article id="color">
+                <input type="color" id="setColor" onchange="getColor()">
+            </article>
+        </main>
+    </main>
+
+<script>
+ function updateDate(){
+    var date = new Date();
+    var setTime = document.getElementById("setTime");
+    setTime.innerHTML = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    var setDate = document.getElementById("setDate");
+    setDate.innerHTML =date.getDate()+"-"+parseInt(date.getMonth()+1) + " - " + date. getFullYear();  
+}
+
+setInterval(updateDate,100);
+onload = updateDate();
+function getColor(){
+var getColor = document.getElementById("setColor").value;
+localStorage.setItem("Color",getColor);
+document.getElementById("time").style.background = localStorage.getItem("Color");
+document.getElementById("body").style.background =localStorage.getItem("Color");
+}
+
+function setColor(){
+document.getElementById("setColor").value = localStorage.getItem("Color");
+document.getElementById("time").style.background =localStorage.getItem("Color");
+document.getElementById("body").style.background = localStorage.getItem("Color");
+}
+
+setInterval(setColor,100);   
+</script>
+</body>
+</html>
